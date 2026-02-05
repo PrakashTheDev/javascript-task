@@ -1,3 +1,8 @@
+alert("Task 1 Running!");
+console.log("Task 1 executed");
+
+
+
 // ===============================
 // 1. Welcome Program
 // ===============================
