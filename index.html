@@ -1,18 +1,172 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>JS Tasks</title>
-</head>
-<body>
-  <h1>JavaScript Tasks</h1>
+<!-- style start-->
+    <style>
 
-  <button onclick="loadTask('task1.js')">Task 1</button>
+        /* Page Styling */
+        body {
+            background-color: #f4f6f9;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: center;
+            margin-top: 80px;
+                flex-direction: column;
+    align-items: center;
+        }
+
+        /* Main Container */
+        .container {
+            background-color: white;
+            width: 500px;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Input Section */
+        input {
+            width: 70%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Ordered List */
+        ol {
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+
+        .task-item {
+            background-color: #e3f2fd;
+            margin: 6px 0;
+            padding: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .task-item:hover {
+            background-color: #bbdefb;
+        }
+
+    </style>
+<!-- style end-->
+
+</head>
+
+<body>
+   <div class="container">
+  <h2>JavaScript Tasks</h2>
+
+  <!-- <button onclick="loadTask('task1.js')">Task 1</button> -->
   <button onclick="loadTask('task2.js')">Task 2</button>
   <button onclick="loadTask('task3.js')">Task 3</button>
   <button onclick="loadTask('task4.js')">Task 4</button>
   <button onclick="loadTask('task5.js')">Task 5</button>
   <button onclick="loadTask('task6.js')">Task 6</button>
   <button onclick="loadTask('task7.js')">Task 7</button>
+</div>
+   <div class="container">
+
+        <h2>My To-Do List</h2>
+
+        <!-- Input and Button -->
+        <input type="text" id="taskInput" placeholder="Enter your task">
+        <button id="addBtn">Add</button>
+
+        <!-- Ordered List -->
+        <ol id="taskList"></ol>
+
+    </div>
+
+    <script>
+
+        // -----------------------------
+        // DOM Selection
+        // -----------------------------
+
+        var input = document.querySelector("#taskInput");
+        var button = document.querySelector("#addBtn");
+        var list = document.querySelector("#taskList");
+
+
+        // -----------------------------
+        // Event Handling (Button Click)
+        // -----------------------------
+
+        button.addEventListener("click", function () {
+
+            // Get value from input field
+            var taskValue = input.value;
+
+            // Check if input is empty
+            if (taskValue === "") {
+                alert("Please enter a task");
+                return;
+            }
+
+            // -----------------------------
+            // Dynamic Element Creation
+            // -----------------------------
+
+            var li = document.createElement("li");
+
+            // Set text
+            li.innerText = taskValue;
+
+            // Apply class
+            li.setAttribute("class", "task-item");
+
+            // Extra styling using JS
+            li.style.color = "#333";
+            li.style.fontSize = "16px";
+
+            // -----------------------------
+            // Remove Task When Clicked
+            // -----------------------------
+
+            li.addEventListener("click", function () {
+                li.remove();
+            });
+
+            // -----------------------------
+            // Append to Ordered List
+            // -----------------------------
+
+            list.append(li);
+
+            // -----------------------------
+            // Clear Input Field
+            // -----------------------------
+
+            input.value = "";
+
+        });
+
+    </script>
 
   <script>
     function loadTask(file) {
@@ -22,8 +176,5 @@
     }
   </script>
 </body>
+
 </html>
-
-
-
-
